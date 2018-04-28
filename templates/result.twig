@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  {{head|raw}}
+  <title>Eurovision {{year}} Quiz Results</title>
+  <link rel="stylesheet" href="style/result.css">
+</head>
+<body>
+  <section>
+    <img src="img/logos/{{year}}.png" class="logo">
+    <h1>Eurovision {{year}} Quiz Results</h1>
+    <p>Here's a definitive list of your favourite Eurovision {{year}} songs! It's based entirely on your input, so if you think it's wrong then either you clicked the wrong button or you're too embarrassed to admit the truth.</p>
+    <p>You can <a href="quiz.php?year={{year}}">take the quiz</a> again, <a href="?year={{year}}&amp;order=global">see the global rankings</a> based on other people's results, <a href="compare.php?left={{countries.raw}}&amp;right=global">compare your results</a>, or use one of the links below to share this list with your friends!</p>
+  </section>
+  {{share|raw}}
+  <section id="quick-share">
+    Copy to Share:
+    <select id="quick-share-select">
+      <option value="">Choose Type</option>
+      <option value="img">Flag Images</option>
+      <option value="emoji">Emoji Flags</option>
+      <option value="text">Country Codes</option>
+    </select>
+
+    <p hidden class="quick-share-option" data-quick-share="text">
+      {% for c in countries.parsed %}
+      {% if c.missing %}
+      {{c.countryCode}}
+      {% else %}
+      <span title="{{c.country}}">{{c.countryCode}}</span>
+      {% endif %}
+      {% endfor %}
+    </p>
+    <p hidden class="quick-share-option" data-quick-share="emoji">
+      {% for c in countries.parsed %}
+      {% if c.missing %}
+      {{c.countryCode}}
+      {% else %}
+      <span title="{{c.country}}">{{c.emoji}}</span>
+      {% endif %}
+      {% endfor %}
+    </p>
+    <p hidden class="quick-share-option" data-quick-share="img">
+      {% for c in countries.parsed %}
+      {% if c.missing %}
+      {{c.countryCode}}
+      {% else %}
+      <img class="flag" title="{{c.country}}" src="img/flags/{{c.countryCode}}.png">
+      {% endif %}
+      {% endfor %}
+    </p>
+  </section>
+  <section>
+    <table>
+      <tr>
+        <th colspan="4">
+          <h3>{{whose}} Eurovision {{year}} Rankings</h3>
+        </th>
+      </tr>
+      <tbody>
+        {% for idx, c in countries.parsed %}
+        {% if c.missing %}
+        <tr>
+          <td>{{idx}}.</td>
+          <td>{{c.countryCode}}</td>
+          <td class="song">?</td>
+          <td class="artist">?</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>{{idx}}.</td>
+          <td><img class="flag" title="{{c.country}}" src="img/flags/{{c.countryCode}}.png"></td>
+          <td class="song">{{c.song}}</td>
+          <td class="artist">{{c.artist}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+  {{footer|raw}}
+  <script src="script/share.js"></script>
+</body>
+</html>

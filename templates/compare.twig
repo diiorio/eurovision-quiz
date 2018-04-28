@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  {{head|raw}}
+  <title>Compare Eurovision {{year}} Favourites</title>
+  <link rel="stylesheet" href="style/compare.css">
+</head>
+<body>
+  <img src="img/logos/{{year}}.png" class="logo">
+  <h1>Compare Eurovision {{year}} Favourites</h1>
+  <p>Use this page to compare two sets of Eurovision favourite picks. Enter a series of 2-letter country codes to generate a list. You can also enter the keyword <kbd>GLOBAL</kbd> to compare with the results of the site. You can also <a href="quiz.php?year={{year}}">click here</a> to take the quiz or use one of the links below to share this page.</p>
+  {{share|raw}}
+  <form class="compare" method="get">
+    <section>
+      <input name="left" placeholder="Enter a list: AT, BE, CZ, ..." type="text" value="{{left.raw}}">
+      <button>Load</button>
+      <table>
+        <tbody>
+          <tr>
+            <th colspan="4">
+              <h3>Eurovision {{year}} Favourites List</h3>
+            </th>
+          </tr>
+          {% for idx, c in left.parsed %}
+          {% if c.missing %}
+          <tr>
+            <td>{{idx}}.</td>
+            <td>{{c.countryCode}}</td>
+            <td class="song">?</td>
+            <td class="artist">?</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td>{{idx}}.</td>
+            <td><img class="flag" title="{{c.country}}" src="img/flags/{{c.countryCode}}.png"></td>
+            <td class="song">{{c.song}}</td>
+            <td class="artist">{{c.artist}}</td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <input name="right" placeholder="Enter a list: AT, BE, CZ, ..." type="text" value="{{right.raw}}">
+      <button>Load</button>
+      <table>
+        <tbody>
+          <tr>
+            <th colspan="4">
+              <h3>Eurovision {{year}} Favourites List</h3>
+            </th>
+          </tr>
+          {% for idx, c in right.parsed %}
+          {% if c.missing %}
+          <tr>
+            <td>{{idx}}.</td>
+            <td>{{c.countryCode}}</td>
+            <td class="song">?</td>
+            <td class="artist">?</td>
+          </tr>
+          {% else %}
+          <tr>
+            <td>{{idx}}.</td>
+            <td><img class="flag" title="{{c.country}}" src="img/flags/{{c.countryCode}}.png"></td>
+            <td class="song">{{c.song}}</td>
+            <td class="artist">{{c.artist}}</td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </form>
+  {{footer|raw}}
+</body>
+</html>

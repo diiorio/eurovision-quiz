@@ -1,0 +1,56 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 0 10%;
+  background-color: #eef;
+}
+body > * {
+  margin-top: 1rem;
+}
+h3 {
+  margin: 0;
+}
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: left;
+  max-width: 100%;
+}
+th {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+td {
+  border-top: 1px solid #999;
+  padding: 0.5ex;
+}
+td.song, td.artist {
+  padding: 0.5ex;
+}
+
+.logo {
+  height: 128px;
+}
+.small {
+  font-size: 0.75em;
+  font-style: italic;
+}
+.flag {
+  vertical-align: bottom;
+}
+.country {
+  font-weight: bold;
+}
+.song {
+  font-style: italic;
+}
+.share a {
+  text-decoration: none;
+}
+.share img {
+  width: 20px;
+  height: 20px;
+}
+.share img:hover {
+  opacity: 0.66;
+}

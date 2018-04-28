@@ -1,0 +1,25 @@
+.compare {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+section {
+  margin: 0 1em;
+  flex: 1 1 40%;
+  max-width: 30em;
+}
+input {
+  display: inline-block;
+  font-size: 0.8rem;
+  width: calc(100% - 5em);
+  margin-bottom: 1em;
+}
+table {
+  width: 100%;
+}
+button {
+  font-size: 0.8rem;
+  display: inline-block;
+  width: 4em;
+  padding: 0;
+}

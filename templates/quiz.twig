@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  {{head|raw}}
+  <title>Eurovision {{year}} Favourites Quiz</title>
+  <link rel="stylesheet" href="style/quiz.css">
+</head>
+<body>
+  <img src="img/logos/{{year}}.png" class="logo">
+  <h1>Eurovision {{year}} Favourites Quiz</h1>
+  <p>Every year, dozens of countries enter the Eurovision Song Contest. And every year, it seems impossible to figure out what order to rank them. But now the answer is here! Use the quiz on this page to choose between two songs at a time until a full ranking is generated. It's based purely on your input, no assumptions or funny business.</p>
+  <p>Generating the list usually takes around 160-180 comparisons. This should take about 15 minutes, assuming you're already familiar with the songs. If you're not, you can check out the links provided for each song during the quiz. Click Begin when you're ready and then click which song you like better of the two presented until you're done! You can also check out the <a href="result.php?year={{year}}&amp;order=global">global rankings</a> or <a href="compare.php?year={{year}}">compare with a friend</a>.</p>
+  {{share|raw}}
+  <section class="container">
+    <div id="start-buttons" class="choose">
+      <div id="begin" class="button">Begin</div>
+      <div id="load" class="button" hidden>
+        Load
+        <div class="small" hidden>(Saved progress does not include all available countries)</div>
+      </div>
+      <form action="report.php" method="POST" id="result-form">
+        <input type="hidden" id="result" name="result">
+        <input type="hidden" name="year" value="{{year}}">
+        <input type="checkbox" class="checkbox" id="contribute" name="contribute" value="1" checked>
+        <label for="contribute" class="small">Contribute my result to the public rankings.</label>
+      </form>
+    </div>
+  </section>
+  <section id="comparisons" hidden>
+    <h2>Round #<span id="round-counter"></span></h2> (<span id="percent-counter"></span>%)
+    <div class="container">
+      <div class="choose">
+        <div id="left" class="button">
+          <div>
+            <img class="flag">
+            <span class="country"></span>
+          </div>
+          <div class="song"></div>
+          <div class="artist"></div>
+        </div>
+        <div class="links">
+          <span>Toggle Links</span>
+          <ul hidden></ul>
+        </div>
+      </div>
+      <div class="choose">
+        <div id="right" class="button">
+          <div>
+            <img class="flag">
+            <span class="country"></span>
+          </div>
+          <div class="song"></div>
+          <div class="artist"></div>
+        </div>
+        <div class="links">
+          <span>Toggle Links</span>
+          <ul hidden></ul>
+        </div>
+      </div>
+    </div>
+    <div id="save-progress" class="button" hidden>
+      Save Progress
+      <div class="small">
+        (Uses local storage to store data)
+      </div>
+    </div>
+    <div id="saved-message" class="small" hidden>
+      Saved.
+    </div>
+  </section>
+  {{footer|raw}}
+  <script src="script/sort.js"></script>
+  <script type="text/javascript">initialize({{year}}, {{data|raw}})</script>
+</body>
+</html>
