@@ -13,7 +13,6 @@ function get_data ($key) {
     ];
   }
 }
-$url = htmlspecialchars("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 $desc = "Check out my favourite Eurovision $year songs and compare them with your own top picks!";
 echo fill('compare.twig', [
   'year' => $year,
