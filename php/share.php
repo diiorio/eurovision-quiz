@@ -11,7 +11,6 @@ function get_share_links () {
   $links = [
     'facebook' => "http://www.facebook.com/sharer.php?u=$url",
     'twitter' => "https://twitter.com/intent/tweet?url=$url&text=$emoji_text",
-    'google' => "https://plus.google.com/share?url=$url&text=$emoji_text",
     'email' => "mailto:?subject=$short_text&body=$url_text",
     'reddit' => "https://reddit.com/submit?url=$url&title=$emoji_text",
     'tumblr' => "https://www.tumblr.com/widgets/share/tool?canonicalUrl=$url&title=$short_text&caption=$url_text"

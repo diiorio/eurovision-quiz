@@ -21,7 +21,6 @@ function fill ($file, $arr) {
       }
       $defaults = [
         'twitter' => 'desc',
-        'google' => 'desc',
         'reddit' => 'desc',
         'email_subject' => 'desc',
         'email_body' => 'url',
