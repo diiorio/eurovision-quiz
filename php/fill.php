@@ -6,7 +6,7 @@ $loader = new Twig_Loader_Filesystem($TEMPLATE_PATH);
 $twig = new Twig_Environment($loader);
 
 function fill ($file, $arr) {
-  global $twig, $TEMPLATE_PATH;
+  global $twig, $TEMPLATE_PATH, $YEARS;
   if (!isset($arr['footer'])) {
     $arr['footer'] = file_get_contents($TEMPLATE_PATH . '/partials/footer.twig');
   }
@@ -36,6 +36,9 @@ function fill ($file, $arr) {
   }
   $arr['share'] = $twig->render('partials/share.twig', $share ?: []);
   $arr['head'] = $twig->render('partials/head.twig', $arr['head'] ?: []);
+  $arr['dropdown'] = $twig->render('partials/dropdown.twig', [
+    'years' => $YEARS
+  ]);
   return $twig->render($file, $arr);
 }
 ?>
